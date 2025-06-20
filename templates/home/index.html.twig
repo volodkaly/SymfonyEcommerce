@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}home
+{% endblock %}
+
+{% block body %}
+	{% if app.user %}
+		<h1 class="text-4xl font-semibold text-gray-900">You are signed in as
+			{{app.user.email}}</h1>
+		<h1 class="text-4xl font-semibold text-gray-900">E-commerce on Symfony by Vladimir Lasac</h1>
+	{% else %}
+		<h1 class="text-4xl font-semibold text-gray-900">Please sign in</h1>
+	{% endif %}
+{% endblock %}
