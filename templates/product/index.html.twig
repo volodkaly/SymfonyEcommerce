@@ -10,6 +10,7 @@
 		<thead class="table-light">
 			<tr>
 				<th>Id</th>
+				<th>category</th>
 				<th>name</th>
 				<th>description</th>
 				<th>price</th>
@@ -23,6 +24,7 @@
 			{% for product in products %}
 				<tr>
 					<td>{{ product.id }}</td>
+					<td>{{ product.category.name }}</td>
 					<td>{{ product.name }}</td>
 					<td>{{ product.description }}</td>
 					<td>{{ product.price }}</td>
