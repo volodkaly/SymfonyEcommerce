@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Product index
+{% block title %}Product list
 {% endblock %}
 
 {% block body %}
@@ -10,13 +10,13 @@
 		<thead class="table-light">
 			<tr>
 				<th>Id</th>
-				<th>Name</th>
-				<th>Description</th>
-				<th>Price</th>
-				<th>Image</th>
-				<th>CreatedAt</th>
-				<th>UpdatedAt</th>
-				<th>Actions</th>
+				<th>name</th>
+				<th>description</th>
+				<th>price</th>
+				<th>image</th>
+				<th>created at</th>
+				<th>updated at</th>
+				<th>actions</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -30,20 +30,23 @@
 						{% if product.image %}
 							<img src="{{ product.image }}" alt="Product Image" class="img-fluid" style="max-height: 64px; max-width: 120px; object-fit: contain; border-radius: 0.25rem; box-shadow: 0 0 5px rgba(0,0,0,0.1);">
 						{% else %}
-							<span class="text-muted">Без картинки</span>
+							<span class="text-muted">no image</span>
 						{% endif %}
 					</td>
 					<td>{{ product.createdAt ? product.createdAt|date('Y-m-d H:i:s') : '' }}</td>
 					<td>{{ product.updatedAt ? product.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
 					<td>
-						<a href="{{ path('app_product_show', {'id': product.id}) }}" class="btn btn-primary btn-sm me-2">
+					<div class="d-inline-flex text-nowrap">
+						<a href="{{ path('app_product_show', {'id': product.id}) }}" class="btn btn-primary me-2">
 							show
 						</a>
 						{% if 'ROLE_ADMIN' in app.user.roles %}
-							<a href="{{ path('app_product_edit', {'id': product.id}) }}" class="btn btn-success btn-sm">
+							<a href="{{ path('app_product_edit', {'id': product.id}) }}" class="btn btn-success me-2">
 								edit
 							</a>
+							    {{ include('product/_delete_form.html.twig') }}
 						{% endif %}
+						</div>
 					</td>
 				</tr>
 			</td>

@@ -28,7 +28,7 @@
       <a href="{{ path('app_home') }}">
         <h1 class="h3 mb-0">Admin Panel</h1>
       </a>
-    </header>
+    
 
     <nav class="px-3">
       {% if app.user %} {% for role in app.user.roles %} |
@@ -47,6 +47,8 @@
       <a href="{{ path('app_login') }}" class="btn btn-primary me-2">login</a>
       {% endif %}
     </nav>
+
+    </header>
 
     <main class="container my-4">
       {% for label, messages in app.flashes %} {% for message in messages %}

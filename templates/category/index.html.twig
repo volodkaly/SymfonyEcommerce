@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Category index
+{% block title %}Category list
 {% endblock %}
 
 {% block body %}
@@ -10,8 +10,8 @@
 		<thead>
 			<tr>
 				<th>Id</th>
-				<th>Name</th>
-				<th>Description</th>
+				<th>name</th>
+				<th>description</th>
 				<th>actions</th>
 			</tr>
 		</thead>
@@ -22,8 +22,13 @@
 					<td>{{ category.name }}</td>
 					<td>{{ category.description }}</td>
 					<td>
-						<a href="{{ path('app_category_show', {'id': category.id}) }}" class="btn btn-primary btn-sm me-2">show</a>
-						<a href="{{ path('app_category_edit', {'id': category.id}) }}" class="btn btn-success btn-sm me-2">edit</a>
+						<a href="{{ path('app_category_show', {'id': category.id}) }}" class="btn btn-primary me-2">show</a>
+						<div  class="d-inline-flex text-nowrap">
+						{% if 'ROLE_ADMIN' in app.user.roles %}
+						<a href="{{ path('app_category_edit', {'id': category.id}) }}" class="btn btn-success me-2">edit</a>
+						    {{ include('category/_delete_form.html.twig') }}
+							{% endif %}
+							</div>
 					</td>
 				</tr>
 			{% else %}

@@ -47,11 +47,11 @@
 
 	<div class="d-flex gap-2 mt-4">
 		<a href="{{ path('app_product_index') }}" class="btn btn-secondary">
-			Back to list
+			back to list
 		</a>
 		{% if 'ROLE_ADMIN' in app.user.roles %}
 			<a href="{{ path('app_product_edit', {'id': product.id}) }}" class="btn btn-primary">
-				Edit
+				edit
 			</a>
 
 			{{ include('product/_delete_form.html.twig') }}
